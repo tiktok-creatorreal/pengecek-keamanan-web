@@ -1,0 +1,19 @@
+name: Cek Keamanan Website
+
+on:
+  workflow_dispatch: # Fitur ini memunculkan tombol agar Anda bisa klik jalan manual kapan saja
+
+jobs:
+  run-scanner:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ambil Kode dari Github
+      uses: actions/checkout@v4
+
+    - name: Siapkan Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Jalankan Pemindaian
+      run: python clickjack_alert.py
